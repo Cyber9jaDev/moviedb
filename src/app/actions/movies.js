@@ -8,10 +8,21 @@ export async function movieLists (){
     }
   };
 
-  const results = await fetch(url, options);
-  const movies = await results.json();
+  try {
+    const response = await fetch(url, options);
 
-  return movies.results
+    if (!response.ok) {
+      throw new Error("Failed to fetch movies");
+    }
+    const data = await response.json();
+    return data.results;
+
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    return [];
+  }
+
+  
 }
 
 
@@ -26,7 +37,6 @@ export async function singleMovie(id){
 };
 
   const results = await fetch(url, options);
-  const movies = await results.json()
-
+  const movies = await results.json();
   return movies.results
 }
