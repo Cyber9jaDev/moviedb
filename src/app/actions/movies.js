@@ -34,8 +34,6 @@ export async function fetchMovieDetails(id){
     }
 };
 
-
-
 try {
   
   const response = await fetch(url, options);
