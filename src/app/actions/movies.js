@@ -1,4 +1,4 @@
-export async function movieLists (){
+export async function movieLists() {
   const url = 'https://api.themoviedb.org/3/movie/now_playing';
   const options = {
     method: 'GET',
@@ -24,7 +24,7 @@ export async function movieLists (){
 }
 
 
-export async function fetchMovieDetails(id){
+export async function fetchMovieDetails(id) {
   const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
   const options = {
     method: 'GET',
@@ -32,11 +32,11 @@ export async function fetchMovieDetails(id){
       accept: 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
     }
-};
+  };
 
-try {
-  
-  const response = await fetch(url, options);
+  try {
+
+    const response = await fetch(url, options);
 
     if (!response.ok) {
       throw new Error("Failed to fetch movie details");
