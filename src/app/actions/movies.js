@@ -34,7 +34,20 @@ export async function fetchMovieDetails(id){
     }
 };
 
-  const results = await fetch(url, options);
-  const movies = await results.json();
-  return movies.results
+
+
+try {
+  
+  const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch movie details");
+    }
+
+    const data = await response.json();
+    return data
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
+    return null;
+  }
 }
