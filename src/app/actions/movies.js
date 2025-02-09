@@ -21,12 +21,10 @@ export async function movieLists (){
     console.error("Error fetching movies:", error);
     return [];
   }
-
-  
 }
 
 
-export async function singleMovie(id){
+export async function fetchMovieDetails(id){
   const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
   const options = {
     method: 'GET',
